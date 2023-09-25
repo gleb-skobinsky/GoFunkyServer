@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "fastapi-boilerplate"
+name = "gofunky-server"
 version = "0.1.0"
-description = "FastAPI Boilerplate"
-authors = ["Hide <padocon@naver.com>"]
+description = "Server for GoFunky"
+authors = ["Hide <glebgytnik@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
