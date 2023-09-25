@@ -1,21 +1,6 @@
 version: '3.7'
 
 services:
-  api:
-    build:
-      context: .
-      dockerfile: docker/prod/api/Dockerfile
-    container_name: api
-    hostname: api
-    ports:
-      - '8000:8000'
-    networks:
-      - backend
-    tty: true
-    depends_on:
-      - db
-    volumes:
-      - $PWD:/home
   db:
     image: postgres:14.5-alpine
     container_name: gofunky_db
@@ -34,8 +19,8 @@ services:
   redis:
     build:
       context: .
-      dockerfile: docker/prod/redis/Dockerfile
-    container_name: redis
+      dockerfile: redis/Dockerfile
+    container_name: gofunky_redis
     hostname: redis
     ports:
       - '6379:6379'

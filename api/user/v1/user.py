@@ -1,6 +1,7 @@
-from typing import List
+from typing import List, Annotated
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, Query, Header, Security
+from fastapi.security import HTTPBearer
 
 from api.user.v1.request.user import LoginRequest
 from api.user.v1.response.user import LoginResponse
@@ -27,8 +28,8 @@ user_router = APIRouter()
     dependencies=[Depends(PermissionDependency([IsAdmin]))],
 )
 async def get_user_list(
-    limit: int = Query(10, description="Limit"),
-    prev: int = Query(None, description="Prev ID"),
+        limit: int = Query(10, description="Limit"),
+        prev: int = Query(None, description="Prev ID"),
 ):
     return await UserService().get_user_list(limit=limit, prev=prev)
 
